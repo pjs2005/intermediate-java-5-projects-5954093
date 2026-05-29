@@ -24,6 +24,7 @@ public class WordGuessingGame {
     }
 
     public void play() {
+        System.out.println("\n\n\n");
         System.out.println("Welcome to the Word Guessing Game!");
         System.out.println("The word has " + wordToGuess.length() + " letters.");
         // System.out.println("The word is " + wordToGuess);
