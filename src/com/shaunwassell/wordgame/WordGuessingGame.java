@@ -8,19 +8,53 @@ public class WordGuessingGame {
     private char[] guessedLetters;
     private int attempts;
 
-    // private String[] wordList;
-    // private int maxAttempts;
+    private String[] wordList;
+    private int maxAttempts;
+
+    private Scanner scanner;
+    private Random rand;
+
+    private int gamesPlayed = 0;
+    private int gamesWon = 0;
+    private int gamesLost = 0;
 
     public WordGuessingGame(String[] wordList, int maxAttempts) {
-        // this.wordList = wordList;
-        Random rand = new Random();
+        this.wordList = wordList;
+        this.maxAttempts = maxAttempts;
+        this.rand = new Random();
+        setNewWordToGuess(wordList);
+        this.scanner = new Scanner(System.in);
+        
+        
+    }
+
+    private void setNewWordToGuess(String[] wordList) {
         this.wordToGuess = wordList[rand.nextInt(wordList.length)].toLowerCase();
-        // this.maxAttempts = maxAttempts;
         this.guessedLetters = new char[wordToGuess.length()];
         for (int i = 0; i < guessedLetters.length; i++) {
             guessedLetters[i] = '_';
         }
-        this.attempts = maxAttempts;
+         this.attempts = this.maxAttempts;
+        
+    }
+
+    public void gameLoop(){
+        boolean wantsToContinue = true;
+        while(wantsToContinue){
+            play();
+            System.out.print("Do you want to play again? (yes/no): ");
+            String response = scanner.nextLine().toLowerCase();
+            if(response.toLowerCase().equals("yes")){
+                setNewWordToGuess(wordList);
+            }else {
+                wantsToContinue = false;
+                System.out.println("Thanks for playing! Goodbye!");
+            }
+
+        }
+        System.out.println("Games Played: " + gamesPlayed);
+        System.out.println("Games Won: " + gamesWon);
+        System.out.println("Games Lost: " + gamesLost);
     }
 
     public void play() {
@@ -28,7 +62,7 @@ public class WordGuessingGame {
         System.out.println("Welcome to the Word Guessing Game!");
         System.out.println("The word has " + wordToGuess.length() + " letters.");
         // System.out.println("The word is " + wordToGuess);
-        Scanner scanner = new Scanner(System.in);
+        gamesPlayed++;
         boolean userHasWon = false;
         while (attempts > 0 && !userHasWon) {
             System.out.println("Attempts left: " + attempts);
@@ -45,6 +79,7 @@ public class WordGuessingGame {
 
             if(isWordGuessed()) {
                 System.out.println("Congratulations! You've guessed the word: " + wordToGuess);
+                gamesWon++;
                 // return;
                 userHasWon = true;
             }
@@ -55,6 +90,7 @@ public class WordGuessingGame {
 
         if(!userHasWon) {
             System.out.println("Game Over! The word was: " + wordToGuess);
+            gamesLost++;
         }
 
     }

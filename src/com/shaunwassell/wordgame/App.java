@@ -6,7 +6,7 @@ public class App {
         String[] wordList = {"java", "python", "kotlin", "javascript"};
         int maxAttempts = 6;
         WordGuessingGame game = new WordGuessingGame(wordList, maxAttempts);
-        game.play();
+        game.gameLoop();
     }
 
 }
