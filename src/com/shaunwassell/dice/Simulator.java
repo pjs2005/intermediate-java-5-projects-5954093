@@ -32,14 +32,21 @@ public class Simulator {
     }
 
     static String display(int value) {
-        return switch (value) {
-            case 1 -> "---------\n|       |\n|   o   |\n|       |\n---------";
-            case 2 -> "---------\n| o     |\n|       |\n|     o |\n---------";
-            case 3 -> "---------\n| o     |\n|   o   |\n|     o |\n---------";
-            case 4 -> "---------\n| o   o |\n|       |\n| o   o |\n---------";
-            case 5 -> "---------\n| o   o |\n|   o   |\n| o   o |\n---------";
-            case 6 -> "---------\n| o   o |\n| o   o |\n| o   o |\n---------";
-            default -> "Not a valid die value";
-        };
+        switch (value) {
+            case 1:
+                return "---------\n|       |\n|   o   |\n|       |\n---------";
+            case 2:
+                return "---------\n| o     |\n|       |\n|     o |\n---------";
+            case 3:
+                return "---------\n| o     |\n|   o   |\n|     o |\n---------";
+            case 4:
+                return "---------\n| o   o |\n|       |\n| o   o |\n---------";
+            case 5:
+                return "---------\n| o   o |\n|   o   |\n| o   o |\n---------";
+            case 6:
+                return "---------\n| o   o |\n| o   o |\n| o   o |\n---------";
+            default:
+                return "Not a valid die value";
+        }
     }
 }
