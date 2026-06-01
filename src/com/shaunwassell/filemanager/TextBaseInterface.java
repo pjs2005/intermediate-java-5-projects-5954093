@@ -18,6 +18,8 @@ public class TextBaseInterface implements UserInterface {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character after the integer input;
+            
             switch (choice) {
                 case 1:
                     System.out.println("Enter the directory path to list files:");
