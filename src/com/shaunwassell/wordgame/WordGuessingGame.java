@@ -50,6 +50,7 @@ public class WordGuessingGame {
                 wantsToContinue = false;
                 System.out.println("Thanks for playing! Goodbye!");
             }
+            System.out.println("Wins : " + gamesWon + " Losses: " + gamesLost);
 
         }
         System.out.println("Games Played: " + gamesPlayed);
