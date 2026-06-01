@@ -30,8 +30,41 @@ public class PasswordGenerator {
             password.append(charOptions.charAt(randomIndex));
         }
 
-        return password.toString();
+        String generatedPassword = password.toString();
 
+        if (doesMatchRequirements(useLowercase, useUppercase, useNumbers, useSpecialChars, generatedPassword, lowercaseChars, uppercaseChars,
+                numberChars, specialChars)){
+            return generatedPassword;
+        } else {
+            return generatePassword(length, useLowercase, useUppercase, useNumbers, useSpecialChars);
+        }
+                
+
+    }
+
+    private boolean doesMatchRequirements(boolean useLowercase, boolean useUppercase, boolean useNumbers, boolean useSpecialChars,
+            String password, String lowercaseChars, String uppercaseChars, String numberChars,
+            String specialChars) {
+                System.out.println("Checking password: " + password);
+        if(useLowercase && !doesContain(password.toString(), lowercaseChars)) {
+            return false;
+        } if(useUppercase && !doesContain(password.toString(), uppercaseChars)) {
+            return false;
+        } if(useNumbers && !doesContain(password.toString(), numberChars)) {
+            return false;
+        } if(useSpecialChars && !doesContain(password.toString(), specialChars)) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean doesContain(String password, String charSet) {
+        for (char c : charSet.toCharArray()) {
+            if (password.contains(String.valueOf(c))) {
+                return true;
+            }
+        }
+        return false;
     }
     
 
